@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Финансовый тыл профессионального спортсмена | Альфа-Капитал</title>
+  <style>
+    :root {
+      --alfa-red: #EF3124;
+      --alfa-red-hover: #D82418;
+      --alfa-red-light: #FFF2F1;
+      --alfa-red-border: #FCA5A5;
+      --bg-body: #F4F6F9;
+      --card-bg: #FFFFFF;
+      --text-main: #0B1F33;
+      --text-muted: #475569;
+      --border-color: #CBD5E1;
+      --gold-accent: #B48C36;
+      --gold-light: #FCF9F2;
+      --gold-border: #E8D5AA;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      padding-bottom: 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1.5px solid var(--border-color);
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-badge {
+      background: var(--alfa-red);
+      color: #FFFFFF;
+      font-weight: 900;
+      font-size: 11px;
+      padding: 5px 9px;
+      border-radius: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .brand-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+    .quick-nav {
+      position: sticky;
+      top: 49px;
+      z-index: 90;
+      background: #FFFFFF;
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .quick-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .nav-pill {
+      background: #F1F5F9;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+    .nav-pill:active {
+      background: var(--alfa-red);
+      color: #FFFFFF;
+      border-color: var(--alfa-red);
+    }
+    main {
+      padding: 16px;
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .section-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px 18px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+      scroll-margin-top: 100px;
+    }
+    .step-tag {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--alfa-red);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .main-title {
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      letter-spacing: -0.4px;
+    }
+    .lead-text {
+      font-size: 13.5px;
+      font-weight: 550;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .stat-cell {
+      background: #F8FAFC;
+      border: 1px solid var(--border-color);
+      border-top: 3.5px solid var(--alfa-red);
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--text-main);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+    .stat-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .card-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .inner-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .card-top-red { border-top: 4px solid var(--alfa-red); }
+    .card-top-navy { border-top: 4px solid #0B1F33; }
+    .card-top-blue { border-top: 4px solid #2563EB; }
+    .inner-badge {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+     background: #F1F5F9;
+      color: var(--text-main);
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .inner-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .inner-desc {
+      font-size: 13px;
+      font-weight: 550;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+    ul.bullet-list {
+      list-style: none;
+      margin-top: 6px;
+    }
+    ul.bullet-list li {
+      font-size: 13px;
+      font-weight: 550;
+      line-height: 1.45;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 16px;
+    }
+    ul.bullet-list li::before {
+      content: "•";
+      color: var(--alfa-red);
+      font-weight: 900;
+      font-size: 16px;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+    .nrd-premium-card {
+      background: linear-gradient(135deg, #FFF5F4 0%, #FFFFFF 100%);
+      border: 1.5px solid #FCA5A5;
+      border-left: 5px solid var(--alfa-red);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 14px;
+      box-shadow: 0 4px 16px rgba(239, 49, 36, 0.08);
+    }
+    .nrd-premium-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .nrd-badge-icon {
+      background: var(--alfa-red);
+      color: #FFFFFF;
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 4px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+    }
+    .nrd-premium-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: #000000;
+      letter-spacing: -0.2px;
+    }
+    .nrd-premium-text {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #000000;
+      font-weight: 600;
+    }
+    .second-life-premium-card {
+      background: linear-gradient(135deg, #FFFDF9 0%, #FBF6EB 100%);
+      border: 1.5px solid #E5D5B5;
+      border-left: 5px solid #B48C36;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-top: 16px;
+      box-shadow: 0 4px 16px rgba(180, 140, 54, 0.1);
+    }
+    .second-life-tag {
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #8C6A1E;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .second-life-tag::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #E8D9BD;
+    }
+    .second-life-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: #000000;
+      font-weight: 700;
+    }
+    .interactive-calc {
+      background: #F8FAFC;
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .calc-control {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .calc-label-row b {
+      color: var(--alfa-red);
+      font-weight: 800;
+    }
+    .calc-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #E2E8F0;
+      outline: none;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+     border-radius: 50%;
+      background: var(--alfa-red);
+      cursor: pointer;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(239, 49, 36, 0.4);
+    }
+    .calc-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--alfa-red);
+      cursor: pointer;
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(239, 49, 36, 0.4);
+    }
+    .calc-results {
+      border-top: 1.5px dashed var(--border-color);
+      padding-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .result-row.highlight-red {
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+    .result-row.highlight-red span:last-child {
+      color: var(--alfa-red);
+      font-size: 17px;
+    }
+    .result-sub {
+      font-size: 11px;
+      color: #94A3B8;
+      line-height: 1.3;
+      margin-top: 4px;
+    }
+    .quote-footer-large {
+      font-size: 15px;
+      font-weight: 700;
+      color: #000000;
+      background: linear-gradient(135deg, #FFF5F4 0%, #FFFFFF 100%);
+      border: 1.5px solid #FCA5A5;
+      border-left: 6px solid var(--alfa-red);
+      padding: 18px 20px;
+      border-radius: 14px;
+      margin-top: 20px;
+      line-height: 1.6;
+      box-shadow: 0 4px 18px rgba(239, 49, 36, 0.08);
+    }
+    .bottom-meeting-note {
+      text-align: center;
+      font-size: 13.5px;
+      color: #0B1F33;
+      margin-top: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand-wrap">
+      <div class="brand-badge">Альфа</div>
+      <div class="brand-title">Капитал Спортсмена</div>
+    </div>
+  </header>
+  <div class="quick-nav">
+    <a href="#step-1" class="nav-pill">1. Реальность карьеры</a>
+    <a href="#step-2" class="nav-pill">2. Почему я</a>
+    <a href="#step-3" class="nav-pill">3. Инфраструктура</a>
+    <a href="#step-4" class="nav-pill">4. Управление сбережениями</a>
+    <a href="#step-5" class="nav-pill">5. Калькулятор</a>
+    <a href="#step-6" class="nav-pill">6. Тест-драйв</a>
+  </div>
+  <main>
+    <!-- ШАГ 1. ВОПРОС-КРЮЧОК И СПЕЦИФИКА СПОРТИВНОЙ ЖИЗНИ -->
+    <section class="section-card" id="step-1">
+      <span class="step-tag">Шаг 1 • Главный вызов</span>
+      <h1 class="main-title">Задумывались ли вы, как сохранить финансовую независимость после спорта?</h1>
+ 
+      <p class="lead-text">
+        И это абсолютно правильный вопрос. Финансовая жизнь профессионального спортсмена кардинально отличается от обычного человека.
+      </p>
+      <div class="card-stack">
+        <div class="inner-card card-top-red">
+          <span class="inner-badge">Спрессованный цикл</span>
+          <h2 class="inner-title">10–15 лет в спорте vs 50 лет жизни</h2>
+          <p class="inner-desc">
+            Обычный специалист зарабатывает до 60–65 лет. У профессионального спортсмена 90% капитала формируется за узкий промежуток сверхдоходов — 8–15 лет активной карьеры. Главная задача — за это короткое время профинансировать 40–50 лет комфортной жизни без падения привычного уровня.
+          </p>
+        </div>
+        <div class="inner-card card-top-navy">
+          <span class="inner-badge">Ловушки быстрого дохода</span>
+          <h2 class="inner-title">Куда чаще всего уходят деньги:</h2>
+          <ul class="bullet-list">
+            <li><b>Бизнес «с друзьями»:</b> вход на доверии без анализа экономики. В итоге — ни контроля, ни отчетности, ни возврата средств.</li>
+            <li><b>Бытовые проекты (мойки, кафе, барбершопы):</b> простой с виду бизнес оборачивается кассовыми разрывами, операционными рисками и потерей вложений.</li>
+            <li><b>Концентрация:</b> крупные суммы в одной идее без разделения рисков. В начале карьеры такая ошибка стоит слишком дорого.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ШАГ 2. ПОЗИЦИОНИРОВАНИЕ: ПОЧЕМУ ИМЕННО Я? -->
+    <section class="section-card" id="step-2">
+      <span class="step-tag">Шаг 2 • Позиционирование</span>
+      <h2 class="main-title">Я не банковский менеджер. Я ваше доверенное лицо на 10–20 лет.</h2>
+ 
+      <p class="lead-text">
+        Общаясь с ребятами из профессионального спорта, я понимаю, насколько ценно найти человека с безупречной репутацией, который глубоко понимает специфику спортивной жизни: плотный соревновательный график, циклы контрактов, переходы в другие клубы и неравномерность денежных потоков.
+      </p>
+      <div class="inner-card card-top-red">
+        <h3 class="inner-title">В чем фундаментальная разница подхода:</h3>
+        <p class="inner-desc" style="margin-bottom: 10px;">
+          Обычный менеджер видит в вас клиента с суммой здесь и сейчас: засыпает шаблонными презентациями и навязывает текущие продукты из своего плана продаж.
+        </p>
+        <p class="inner-desc" style="font-weight: 700; color: var(--text-main); margin-bottom: 8px;">
+          Я развиваю специализированное направление по работе с профессиональными спортсменами и выстраиваю долгосрочную систему:
+        </p>
+        <ul class="bullet-list">
+          <li><b>Защита от финансовых потерь:</b> ограждаю от сомнительных авантюр, эмоциональных решений и навязанных стартапов.</li>
+          <li><b>Защита от инфляции:</b> капитал работает эффективнее депозитов и накопительных счетов.</li>
+          <li><b>Система под каждый этап карьеры:</b> адаптивный план во время выступлений, при продлении или смене контракта и после завершения спорта.</li>
+          <li><b>Фильтр сторонних предложений:</b> аудит и проверка любых инвестиционных предложений, поступающих к вам со стороны.</li>
+          <li><b>Решение личных вопросов:</b> комплексная помощь по налогам, крупным покупкам недвижимости и целевым семейным резервам.</li>
+        </ul>
+      </div>
+    </section>
+ 
+    <!-- ШАГ 3. МАСШТАБ И НАДЕЖНОСТЬ: АЛЬФА-КАПИТАЛ -->
+    <section class="section-card" id="step-3">
+      <span class="step-tag">Шаг 3 • Инфраструктура</span>
+      <h2 class="main-title">Вы выступаете в топ-лиге. Ваши финансы должны обслуживаться в топ-лиге.</h2>
+      <p class="lead-text">
+        Я представляю УК «Альфа-Капитал» — крупнейшую компанию на рынке доверительного управления в России с многолетней безупречной историей.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-val">33 года</div>
+          <div class="stat-lbl">Опыт на рынке РФ</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">> 1 трлн ₽</div>
+          <div class="stat-lbl">Активы под управлением</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">3,1 млн</div>
+          <div class="stat-lbl">Клиентов компании</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val">А++</div>
+          <div class="stat-lbl">Высший рейтинг надежности</div>
+        </div>
+      </div>
+ 
+      <div class="nrd-premium-card">
+        <div class="nrd-premium-header">
+          <span class="nrd-badge-icon">НРД</span>
+          <span class="nrd-premium-title">Железная защита: прямое владение в НРД</span>
+        </div>
+        <p class="nrd-premium-text">
+          Кладя деньги на депозит, вы даете банку в долг. У нас все активы — фонды, акции, облигации, коммерческая недвижимость — будут в вашей собственности с прозрачной отчетностью и ежедневным доступом. Учет ведет независимый государственный орган — Национальный Расчетный Депозитарий (НРД). Даже при форс-мажоре УК активы за одно заявление переводятся в Сбер, ВТБ или любой другой банк.
+        </p>
+      </div>
+    </section>
+ 
+    <!-- ШАГ 4. ВЫГОДЫ: СИСТЕМА УПРАВЛЕНИЯ СБЕРЕЖЕНИЯМИ -->
+    <section class="section-card" id="step-4">
+      <span class="step-tag">Шаг 4 • Архитектура сбережений</span>
+      <h2 class="main-title">Система управления сбережениями</h2>
+      <p class="lead-text">
+        Вместо разовых покупок мы выстраиваем капитал через трехуровневую систему целевых контуров, решая задачи ежедневной ликвидности, надежной защиты и долгосрочной ренты.
+      </p>
+      <div class="card-stack">
+        <div class="inner-card card-top-blue">
+          <span class="inner-badge">Контур 1 • Всегда под рукой</span>
+          <h3 class="inner-title">Оперативный резерв</h3>
+          <ul class="bullet-list">
+            <li>Фонды денежного рынка: доходность на уровне ключевой ставки ЦБ.</li>
+            <li>Ежедневная капитализация накопленного процента.</li>
+            <li><b>Полная свобода:</b> снятие любой суммы в любой день без потери накопленного дохода.</li>
+            <li><b>На текущие цели:</b> деньги на отпуска, ремонты, покупку машины, здоровье и непредвиденные траты.</li>
+          </ul>
+        </div>
+        <div class="inner-card card-top-navy">
+          <span class="inner-badge">Контур 2 • Оборона (1–5 лет)</span>
+          <h3 class="inner-title">Тактический резерв</h3>
+          <ul class="bullet-list">
+            <li>Фонды надежных облигаций и коммерческая недвижимость.</li>
+            <li>Предсказуемый фиксированный доход выше инфляции под крупные покупки и семейные цели.</li>
+          </ul>
+        </div>
+        <div class="inner-card card-top-red">
+          <span class="inner-badge">Контур 3 • Нападающие (3–7+ лет)</span>
+          <h3 class="inner-title">Стратегический рост и пассивная рента</h3>
+          <ul class="bullet-list">
+            <li><b>Прямые инвестиции в бизнес, фонды акций</b> и ЗПИФ коммерческой недвижимости.</li>
+            <li>Активный рост на сложном проценте, пока идет контракт.</li>
+            <li><b>Личная пенсия с 35 лет:</b> портфель формирует стабильный доход (1–3+ млн ₽) с первого дня окончания карьеры.</li>
+          </ul>
+        </div>
+      </div>
+ 
+      <div class="second-life-premium-card">
+        <div class="second-life-tag">Вторая половина жизни</div>
+        <div class="second-life-text">
+          Мой фокус — сделать так, чтобы ваша жизнь после спорта была финансово независимой и «Моя задача — растянуть ваш доход на всю жизнь».
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ШАГ 5. ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР -->
+    <section class="section-card" id="step-5">
+      <span class="step-tag">Шаг 5 • Математика</span>
+      <h2 class="main-title">Магия сложного процента: посчитайте свой результат</h2>
+      <p class="lead-text">
+        Пока вы тренируетесь и выигрываете старты — деньги должны генерировать новый капитал. Попробуйте подвигать параметры под свой контракт:
+      </p>
+      <div class="interactive-calc">
+        <div class="calc-control">
+          <div class="calc-label-row">
+            <span>Стартовый капитал:</span>
+            <b id="startValText">15 млн ₽</b>
+          </div>
+          <input type="range" id="startInput" min="5" max="50" step="1" value="15" class="calc-slider">
+        </div>
+        <div class="calc-control">
+          <div class="calc-label-row">
+            <span>Ежегодное пополнение:</span>
+            <b id="addValText">10 млн ₽/год</b>
+          </div>
+          <input type="range" id="addInput" min="0" max="30" step="1" value="10" class="calc-slider">
+        </div>
+        <div class="calc-control">
+          <div class="calc-label-row">
+            <span>Срок инвестирования:</span>
+            <b id="yearsValText">15 лет</b>
+          </div>
+          <input type="range" id="yearsInput" min="3" max="20" step="1" value="15" class="calc-slider">
+        </div>
+        <div class="calc-results">
+          <div class="result-row">
+            <span>Собственные вложения:</span>
+            <span id="totalInvestedText">165 млн ₽</span>
+          </div>
+          <div class="result-row highlight-red">
+            <span>Капитал со сложным процентом:</span>
+            <span id="totalCapText">671 млн ₽</span>
+          </div>
+          <div class="result-sub">
+            *Ориентировочный расчет при реинвестировании под 15% годовых
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- ШАГ 6. ТЕСТОВЫЙ ПЕРИОД, РЕПУТАЦИЯ И ЛЕГКИЙ СТАРТ -->
+    <section class="section-card" id="step-6">
+      <span class="step-tag">Шаг 6 • Комфортный старт</span>
+      <h2 class="main-title">Тест-драйв без давления: начнем с разминки</h2>
+ 
+      <p class="lead-text">
+        Мы не строим сразу идеальный портфель на 20 лет. Мы делаем первый, абсолютно комфортный шаг, чтобы вы своими глазами увидели, как мы работаем, как выглядит сервис, как я отвечаю на вопросы и как ведут себя инструменты. Это как тест-драйв перед покупкой машины — никаких обязательств, только знакомство и проверка договоренностей.
+      </p>
+      <div class="card-stack">
+        <div class="inner-card card-top-red">
+          <span class="inner-badge">Шаг 1 • Аудит без бумаг и переводов</span>
+          <h3 class="inner-title">Бесплатный разбор структуры</h3>
+          <p class="inner-desc">
+            Вам не нужно сейчас ничего мне переводить или подписывать. Давайте для начала проведем аудит. Расскажите или покажите, как у вас сейчас распределены деньги: лежат ли они просто на вкладах и в какой валюте. Через 2–3 дня я вернусь к вам с бесплатным заключением: где вы теряете деньги на инфляции и как оптимизировать активы под ваши цели.
+          </p>
+        </div>
+        <div class="inner-card card-top-navy">
+          <span class="inner-badge">Шаг 2 • Тестовый период</span>
+          <h3 class="inner-title">Проверка подхода на комфортной сумме</h3>
+          <p class="inner-desc" style="margin-bottom: 8px;">
+            Инвестиции — это про доверие. Мы берем любую комфортную для вас сумму, открываем счет, собираем стартовый защитный портфель, и вы в мобильном приложении просто наблюдаете 2–3 месяца:
+          </p>
+          <ul class="bullet-list">
+            <li><b>Прозрачность:</b> каждый пай виден в приложении, каждый рубль зафиксирован в государственном НРД. Отчетность открыта и доступна ежедневно.</li>
+            <li><b>Полная свобода:</b> нет штрафов за досрочный выход и нет скрытых комиссий. Вы в любой момент можете сказать «стоп» — и через 1 день деньги у вас на счете.</li>
+            <li><b>Проверка сервиса:</b> оцениваете, как быстро я отвечаю на вопросы (доступ 24/7), понятна ли отчетность и навязываю ли я что-то или честно говорю, что работает, а что нет.</li>
+            <li><b>Строгий регламент:</b> я знаю ваше расписание и никогда не буду беспокоить вас звонками или спамить графиками в дни соревнований и матчей.</li>
+          </ul>
+        </div>
+        <div class="inner-card card-top-blue">
+          <span class="inner-badge">Шаг 3 • Большая игра</span>
+          <h3 class="inner-title">Переход к генеральной стратегии</h3>
+          <p class="inner-desc">
+            И только потом, когда тестовый портфель работает и вам все нравится, мы садимся за полноценный финансовый план: считаем необходимый капитал на следующие 40–50 лет жизни, формируем целевые фонды («Университет детям», «Недвижимость») и запускаем личную пенсионную ренту.
+          </p>
+        </div>
+      </div>
+ 
+      <div class="quote-footer-large">
+        «Развивая направление работы со спортсменами, я прекрасно понимаю, насколько важна репутация. Если я обману или буду действовать не в рамках договоренностей — я навсегда потеряю возможность работать с другими ребятами из профессионального спорта. Моя цель — стать доверенным лицом вашей семьи на ближайшие 20 лет».
+      </div>
+ 
+      <p class="bottom-meeting-note">
+        Могу подъехать после соревнований в вашем городе или созвониться онлайн в удобное для вас окно между тренировками.
+      </p>
+    </section>
+  </main>
+  <script>
+    const startInput = document.getElementById('startInput');
+    const addInput = document.getElementById('addInput');
+    const yearsInput = document.getElementById('yearsInput');
+    const startValText = document.getElementById('startValText');
+    const addValText = document.getElementById('addValText');
+    const yearsValText = document.getElementById('yearsValText');
+    const totalInvestedText = document.getElementById('totalInvestedText');
+    const totalCapText = document.getElementById('totalCapText');
+    const RATE = 0.15;
+    function calculateCompoundInterest() {
+      const P = parseFloat(startInput.value);
+      const PMT = parseFloat(addInput.value);
+      const t = parseInt(yearsInput.value);
+      startValText.innerText = P + ' млн ₽';
+      addValText.innerText = PMT + ' млн ₽/год';
+      yearsValText.innerText = t + ' ' + (t === 1 ? 'год' : t < 5 ? 'года' : 'лет');
+      const totalInvested = P + (PMT * t);
+      const fvStart = P * Math.pow(1 + RATE, t);
+      const fvAdd = PMT > 0 ? PMT * ((Math.pow(1 + RATE, t) - 1) / RATE) : 0;
+     const totalCapital = Math.round(fvStart + fvAdd);
+      totalInvestedText.innerText = totalInvested.toLocaleString('ru-RU') + ' млн ₽';
+      totalCapText.innerText = totalCapital.toLocaleString('ru-RU') + ' млн ₽';
+    }
+    startInput.addEventListener('input', calculateCompoundInterest);
+    addInput.addEventListener('input', calculateCompoundInterest);
+    yearsInput.addEventListener('input', calculateCompoundInterest);
+    calculateCompoundInterest();
+  </script>
+</body>
+</html>
